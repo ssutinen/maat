@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://maat.local/schemas/graph.schema.json",
+  "title": "GraphSpec",
+  "type": "object",
+  "required": ["api_version", "nodes", "edges", "entry"],
+  "additionalProperties": false,
+  "properties": {
+    "api_version": { "const": "maat/v1alpha1" },
+    "nodes": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "$ref": "#/definitions/node" }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to"],
+        "additionalProperties": false,
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "when": { "type": "object" }
+        }
+      }
+    },
+    "entry": { "type": "string" },
+    "compensation": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "max_state_bytes": { "type": "integer", "minimum": 1, "default": 1048576 }
+  },
+  "definitions": {
+    "node": {
+      "type": "object",
+      "required": ["kind"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "type": "string" },
+        "inputs": { "type": "object" },
+        "outputs": { "type": "object" },
+        "retry": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "max_attempts": { "type": "integer", "minimum": 1, "default": 1 },
+            "backoff": { "enum": ["constant", "exponential"], "default": "constant" },
+            "backoff_ms": { "type": "integer", "minimum": 0, "default": 1000 },
+            "jitter": { "type": "boolean", "default": false }
+          }
+        },
+        "timeout_s": { "type": "integer", "minimum": 1 },
+        "compensation": { "type": "string" },
+        "no_compensate": { "type": "boolean", "default": false },
+        "side_effects": { "type": "boolean", "default": true },
+        "config": { "type": "object" }
+      }
+    }
+  }
+}

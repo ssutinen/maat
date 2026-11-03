@@ -24,6 +24,10 @@ test *args:
 test-property:
     mix test --only property
 
+# Format the code
+fmt:
+    mix format
+
 # Check formatting, then fail on compiler warnings
 lint:
     mix format --check-formatted

@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://maat.local/schemas/manifest.schema.json",
+  "title": "NodeManifest",
+  "type": "object",
+  "required": ["transport", "input", "output", "timeout_s"],
+  "additionalProperties": false,
+  "properties": {
+    "transport": { "enum": ["http", "grpc", "process"] },
+    "input": { "type": "object" },
+    "output": { "type": "object" },
+    "timeout_s": { "type": "integer", "minimum": 1 },
+    "side_effects": { "type": "boolean", "default": true },
+    "hints": { "type": "object" }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "codes": [
+    { "code": "0001", "range": "0xxx", "class": "success", "message": "ok" },
+    { "code": "1001", "range": "1xxx", "class": "transport-unknown", "message": "invoke timeout" },
+    { "code": "1002", "range": "1xxx", "class": "transport-unknown", "message": "heartbeat lost" },
+    { "code": "1003", "range": "1xxx", "class": "transport-unknown", "message": "executor vanished" },
+    { "code": "2001", "range": "2xxx", "class": "deterministic-failure", "message": "node error" },
+    { "code": "2002", "range": "2xxx", "class": "deterministic-failure", "message": "output schema violation" },
+    { "code": "2003", "range": "2xxx", "class": "deterministic-failure", "message": "deadline exceeded by node" },
+    { "code": "3001", "range": "3xxx", "class": "admission", "message": "invalid graph" },
+    { "code": "3002", "range": "3xxx", "class": "admission", "message": "unknown node kind" },
+    { "code": "3003", "range": "3xxx", "class": "admission", "message": "missing compensation" },
+    { "code": "3004", "range": "3xxx", "class": "admission", "message": "unreachable node" },
+    { "code": "3005", "range": "3xxx", "class": "admission", "message": "compensation of compensation" },
+    { "code": "4001", "range": "4xxx", "class": "state-concurrency", "message": "version conflict (fenced)" },
+    { "code": "4002", "range": "4xxx", "class": "state-concurrency", "message": "lease lost" },
+    { "code": "4003", "range": "4xxx", "class": "state-concurrency", "message": "instance terminal" },
+    { "code": "5001", "range": "5xxx", "class": "engine-internal", "message": "storage error" },
+    { "code": "5002", "range": "5xxx", "class": "engine-internal", "message": "driver unavailable" },
+    { "code": "5003", "range": "5xxx", "class": "engine-internal", "message": "state exceeds max_state_bytes" }
+  ]
+}
